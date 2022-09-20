@@ -26,6 +26,7 @@ Here we will discuss the installation and running of this tool on a **Linux**-ba
     - [AutoDock-GPU](#autodock-gpu-1)
       - [Prepare environment variables](#prepare-environment-variables)
       - [Compilation](#compilation)
+    - [Avagadro](#avagadro)
 
 ## Requirements
 
