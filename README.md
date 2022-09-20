@@ -394,7 +394,7 @@ make DEVICE=CUDA NUMWI=64
 
 The best work-group size depends on the GPU and workload. Try `NUMWI=128` or `NUMWI=64` for modern cards with typical workloads.
 
-After successful compilation, the host binary file is placed into the `AutoDock-GPU/bin` folder. The binary file with take the form `autodock_gpu_{work-group size}wi`.
+After successful compilation, the host binary file is placed into the `AutoDock-GPU/bin` folder. The binary file will take the form `autodock_gpu_{work-group size}wi`.
 
 To add this folder to the PATH to enable easier running of the program, you can run the following command.
 
