@@ -57,7 +57,7 @@ echo 'export PATH=$PATH:/home/{username}/MGLtools-1.5.7/MGLToolsPckgs/AutoDockTo
 Head over to the NVIDIA [cuda-toolkit page](https://developer.nvidia.com/cuda-toolkit), click the download link, and select your operating system, system architecture, distribution (e.g. Ubuntu), version number (e.g. 22.04), and the installer type you would like. We will select `deb (local)` here.
 
 <p align="center">
-    <img src="./assets/cuda-target-platform.png" width=75%>
+    <img src="./assets/cuda-target-platform.png">
 </p>
 
 This will provide you with a set of command line instructions for installing the CUDA toolkit.
@@ -213,7 +213,7 @@ sudo systemctl enable nvidia-persistenced
 If the NVIDIA Persistence Daemon is running correcly, the first command should produce an output that looks like this:
 
 <p align="center">
-    <img src="./assets/nvidia-persistencedaemon.png" width=75%>
+    <img src="./assets/nvidia-persistencedaemon.png">
 </p>
 
 **udev rule update**
@@ -313,7 +313,7 @@ deviceQuery
 If a CUDA-capable device and the CUDA driver are installed, you should get an output like this:
 
 <p align="center">
-    <img src="./assets/deviceQuery-pass.png" width=75%>
+    <img src="./assets/deviceQuery-pass.png">
 </p>
 
 The exact appearance and the output lines may be different on your system. The important outcomes are that a device was found (`Detected 1 CUDA Capable device(s)`), that the device matches the one on your system (`CUDA Driver Version / Runtime Version`), and that the test passed (final line: `Result = PASS`).
@@ -327,5 +327,5 @@ If a CUDA-capable device and the CUDA driver are installed but `deviceQuery` rep
 Next running the `bandwidthTest` program ensures that the system and the CUDA-capable device are able to communicate correctly. A successful output is shown below.
 
 <p align="center">
-    <img src="./assets/bandwidthTest-pass.png" width=75%>
+    <img src="./assets/bandwidthTest-pass.png">
 </p>
