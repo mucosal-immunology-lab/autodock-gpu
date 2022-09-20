@@ -4,6 +4,29 @@ AutoDock-GPU [(Santos-Martins 2021)](https://pubmed.ncbi.nlm.nih.gov/33403848/) 
 
 Here we will discuss the installation and running of this tool on a **Linux**-based operating system.
 
+## Table of Contents
+
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+    - [AutoDock4 and AutoGrid4](#autodock4-and-autogrid4)
+    - [MGLTools](#mgltools)
+    - [CUDA](#cuda)
+      - [Pre-installation instrutions](#pre-installation-instrutions)
+        - [Verify you have a CUDA-capable GPU](#verify-you-have-a-cuda-capable-gpu)
+        - [Verify you have a supported version of Linux](#verify-you-have-a-supported-version-of-linux)
+        - [Verify the system has gcc installed](#verify-the-system-has-gcc-installed)
+        - [Verify the system has the correct kernel headers and development packages installed](#verify-the-system-has-the-correct-kernel-headers-and-development-packages-installed)
+      - [Install CUDA toolkit](#install-cuda-toolkit)
+      - [Mandatory post-installation actions](#mandatory-post-installation-actions)
+        - [Environment setup](#environment-setup)
+        - [POWER9 setup](#power9-setup)
+      - [Recommended post-installation actions](#recommended-post-installation-actions)
+        - [Install Persistence Daemon](#install-persistence-daemon)
+        - [Verify the installation](#verify-the-installation)
+    - [AutoDock-GPU](#autodock-gpu-1)
+      - [Prepare environment variables](#prepare-environment-variables)
+      - [Compilation](#compilation)
+
 ## Requirements
 
 * Administrator privileges.
