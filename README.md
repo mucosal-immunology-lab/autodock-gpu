@@ -280,7 +280,7 @@ Install the sample programs, located at [https://github.com/nvidia/cuda-samples]
 
 Get the CUDA samples using the following instructions.
 
-1. Clone the git repository into `/Documents/Tools`.
+1. Clone the git repository into `~/Documents/Tools`.
 2. Change into the directory and run the Makefile.
 3. Add the `deviceQuery` folder `PATH` export command to your `.bashrc` file.
 4. Add the `bandwidthTest` folder `PATH` export command to your `.bashrc` file.
@@ -329,3 +329,60 @@ Next running the `bandwidthTest` program ensures that the system and the CUDA-ca
 <p align="center">
     <img src="./assets/bandwidthTest-pass.png">
 </p>
+
+### AutoDock-GPU
+
+Firstly we can clone the [AutoDock-GPU](https://github.com/ccsb-scripps/AutoDock-GPU) GitHub repository into the `~/Documents/Tools` folder.
+
+```bash
+# Change into the Tools folder
+cd ~/Documents/Tools
+
+# Clone the AutoDock-GPU repository
+git clone https://github.com/ccsb-scripps/AutoDock-GPU
+```
+
+#### Prepare environment variables
+
+In order to compile the AutoDock-GPU tool for use with CUDA, we first need to provide environment variables required. These include:
+
+* `LD_LIBRARY_PATH`: we already defined this environment variable above during installation of the CUDA toolkit.
+* `GPU_INCLUDE_PATH`: paths containing the CUDA/OpenCL header files, i.e. `cuda.h`, `CL/cl.h`, `CL/cl.hpp`, and `opencl.h`.
+* `GPU_LIBRARY_PATH`: paths containing the CUDA/OpenCL shared libraries, i.e. `libcudart.so` and `libOpenCL.so`.
+
+To prepare the `GPU_INCLUDE_PATH` and `GPU_LIBRARY_PATH` environment variables, we can run the following code. You may need to change the CUDA version number, or double check that the required files exist at the relevant locations if you run into issues.
+
+```bash
+# Add PATH export setting to ~/.bashrc for GPU_INCLUDE_PATH
+echo 'export GPU_INCLUDE_PATH=/usr/local/cuda-11.7/include' >> ~/.bashrc
+
+# Add PATH export setting to ~/.bashrc for GPU_LIBRARY_PATH
+echo 'export GPU_LIBRARY_PATH=/usr/local/cuda-11.7/lib64' >> ~/.bashrc
+```
+
+#### Compilation
+
+The basic compilation requires you to specify the target accelerator (in our case `CUDA`) using the `DEVICE` argument, while the work-group/thread block size is set with `NUMWI` (with a default of 64 if not provided).
+
+```bash
+# Compile the CUDA-accelerated AutoDock-GPU program
+make DEVICE=CUDA NUMWI=64
+```
+
+The best work-group size depends on the GPU and workload. Try `NUMWI=128` or `NUMWI=64` for modern cards with typical workloads.
+
+After successful compilation, the host binary file is placed into the `AutoDock-GPU/bin` folder. The binary file with take the form `autodock_gpu_{work-group size}wi`.
+
+To add this folder to the PATH to enable easier running of the program, you can run the following command.
+
+```bash
+# Add AutoDock-GPU/bin folder to the path
+echo 'export PATH=$PATH:~/Documents/Tools/AutoDock-GPU/bin' >> ~/.bashrc
+```
+
+Downstream we will now be able to use the binaries directly without having to specify the binary location, e.g.:
+
+```bash
+# Example command for running AutoDock-GPU
+autodock_gpu_64wi --ffile <protein>.maps.fld --lfile <ligand>.pdbqt --nrun 20
+```
