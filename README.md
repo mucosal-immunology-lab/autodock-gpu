@@ -453,7 +453,7 @@ Download the Qt installer from its [official download site](https://www.qt.io/do
 
 Run the installer, and follow through the steps which include a user registration (**you do not need to enter your city or phone number**).
 
-At the `Installation folder` step, select the option for desktop development.
+**Note**: at the `Installation folder` step, select the option for desktop development.
 
 <p align="center">
   <img src="./assets/qt-install-type.png">
