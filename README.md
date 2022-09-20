@@ -53,7 +53,7 @@ sudo apt install autogrid
 
 Next we need to install MGLTools from the browser using this [link](https://ccsb.scripps.edu/mgltools/downloads/). Choose the GUI installer option for Linux, which has the file name `mgltools_Linux-x86_64_xxx_Install`.
 
-We need to give the installer permission to execute as a program. Right-click the file, switch to the `Permissions` tab, and check the box at the bottom that says `Allow executing file as program`.
+We need to give the installer permission to execute as a program. Right-click the file and select `Properties`, switch to the `Permissions` tab, and check the box at the bottom that says `Allow executing file as program`.
 
 <p align="center">
     <img src="./assets/mgltools-as-program.png" width=75%>
@@ -408,4 +408,62 @@ Downstream we will now be able to use the binaries directly without having to sp
 ```bash
 # Example command for running AutoDock-GPU
 autodock_gpu_64wi --ffile <protein>.maps.fld --lfile <ligand>.pdbqt --nrun 20
+```
+
+### Avagadro
+
+Avogadro is an advanced molecule editor and visualiser designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. It offers flexible high quality rendering and a powerful plugin architecture.
+
+We will use this tool to prepare our small molecule ligands for use with AutoDock-GPU. It can be downloaded [here](https://avogadro.cc/) using the `Download` tab at the top of the webpage.
+
+Next we will extract the `tar.gz` archive into the `~/Documents/Tools` folder. Double check the Avogadro version number in the command.
+
+```bash
+# Extract the tar.gz file in the Downloads folder to our Tools folder
+tar -zxvf ~/Downloads/avogadro-1.2.0.tar.gz -C ~/Documents/Tools/
+```
+
+#### Satisfy Avogadro requirements
+
+There are a few requirements we must satisfy for Avogadro to compile successfully.
+
+* `CMake` version >= 2.8.9
+* `Qt` version >= 4.6.0
+* `OpenBabel` version >= 2.3.x
+* `Eigen` version >= 2.0.x (version 3.x also supported)
+
+**CMake**:
+
+```bash
+# Install CMake
+sudo apt-get install cmake
+```
+
+**Qt**:
+
+```bash
+# Ensure the package manager is up-to-date
+sudo apt-get update && sudo apt-get upgrade
+
+# Install the pre-requisites for Qt
+sudo apt-get -y install build-essential openssl libssl-dev libssl1.0 libgl1-mesa-dev libqt5x11extras5
+```
+
+Download the Qt installer from its [official download site](https://www.qt.io/download-qt-installer). Then, similar to what we had to do for MGLTools, right-click the installer file in the `Downloads` folder, click `Properties`, switch to the `Permissions` tab, and allow the file to execute as a program.
+
+Run the installer, and follow through the steps which include a user registration (**you do not need to enter your city or phone number**).
+
+At the `Installation folder` step, select the option for desktop development.
+
+<p align="center">
+  <img src="./assets/qt-install-type.png">
+</p>
+
+#### Compile the program
+
+Now we can compile Avogadro.
+
+```bash
+# Change to the Avogadro directory
+cd ~/Documents/Tools/avogadro-1.2.0
 ```
